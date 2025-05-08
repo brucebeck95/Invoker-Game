@@ -28,10 +28,9 @@ var spellList = []Spell{
 	{name: "EMP", keyCombination: "WWW"},
 	{name: "Tornado", keyCombination: "WWQ"},
 	{name: "Cold Snap", keyCombination: "QQQ"},
-	{name: "Deafening Blast", keyCombination: "QWE"}, // Corrected typo
+	{name: "Deafening Blast", keyCombination: "QWE"},
 }
 
-//
 
 func getRandomSpell(numSpells int) []Spell {
 
@@ -47,9 +46,9 @@ func getRandomSpell(numSpells int) []Spell {
 	})
 
 	if numSpells >= n {
-		return shuffledSpells // Return all spells, shuffled
+		return shuffledSpells
 	}
-	return shuffledSpells[:numSpells] // Return the first numSpells from the shuffled list
+	return shuffledSpells[:numSpells]
 }
 
 func areAnagrams(firstString, secondString string) bool {
@@ -78,7 +77,7 @@ func main() {
 
 	go func() {
 		<-sigChan
-		term.Restore(int(os.Stdin.Fd()), oldState) // Ensure terminal is restored
+		term.Restore(int(os.Stdin.Fd()), oldState)
 		fmt.Print("\r\nGame interrupted. Exiting.\r\n")
 		os.Exit(1)
 	}()
@@ -167,7 +166,7 @@ OuterLoop:
 				fmt.Printf("\r\033[KEnter orbs: %s", string(currentKeyQueue))
 
 			default:
-				// Silently ignore other keys.
+			
 			}
 		}
 	}
@@ -175,7 +174,7 @@ OuterLoop:
 	endTime := time.Now()
 	duration := endTime.Sub(startTime).Seconds()
 
-	fmt.Printf("\r\n\033[K--- Game Over! ---\r\n") // Clear line
+	fmt.Printf("\r\n\033[K--- Game Over! ---\r\n")
 	fmt.Printf("\033[KYou attempted %d spells.\r\n", len(spells))
 	fmt.Printf("\033[KYour score: %d out of %d.\r\n", score, len(spells))
 	fmt.Printf("\033[KTotal time: %.2f seconds.\r\n", duration)
