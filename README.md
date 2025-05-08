@@ -1,3 +1,5 @@
+Fun project to play around with Go
+
 Basic CLI version of https://www.invokergame.com/
 
 ```Example
